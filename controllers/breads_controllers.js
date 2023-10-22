@@ -8,7 +8,7 @@ const Bread = require('../models/bread.js')
     // res.send(Bread)
 // })
 
-// INDEX
+/* INDEX
 breads.get('/', (req, res) => {
     res.render('Index',
       {
@@ -16,6 +16,17 @@ breads.get('/', (req, res) => {
         title: 'Index Page',
       })
 })
+*/
+
+breads.get('/', (req, res) => {
+  Bread.find().then((foundBreads) => {
+    res.render('index', {
+      breads: foundBreads,
+      title: 'Index Page',
+    })
+  })
+})
+
 
 // NEW
 breads.get('/new', (req, res) => {
@@ -46,9 +57,11 @@ breads.post('/', (req, res) => {
   } else {
     req.body.hasGluten = false
   }
-  Bread.push(req.body)
+  // Bread.push(req.body)
+  Bread.create(req.body)
   res.redirect('/breads')
 })
+
 
 // DELETE
 breads.delete('/:indexArray', (req, res) => {

@@ -1,6 +1,7 @@
 // dependencies
 const express = require('express')
 const methodOverride = require('method-override')
+const mongoose = require('mongoose')
 
 // CONFIGURATION
 require('dotenv').config()
@@ -33,6 +34,11 @@ app.get('*', (req, res) => {
 
 
 
+//Mongo-Mongoose Connection
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+
+
+
 // listen
 app.listen(PORT, () => {
     console.log('listening on port', PORT);
@@ -40,3 +46,26 @@ app.listen(PORT, () => {
 
 
 
+
+
+
+
+/* Day 7 Lessons
+
+INTEGRATE
+npm i mongoose
+server.js
+    require
+    mongo<->mongoose connection
+
+MODELING/SCHEMA BUILD 
+breads.js 
+     SCHEMA
+     MODELING
+
+
+HELPER METHODS
+breads_controller.js
+    Utilize methods
+
+    */

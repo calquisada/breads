@@ -1,4 +1,45 @@
-module.exports = [
+// require mongoose
+const mongoose = require('mongoose')
+
+// (destructuring) creating shorthand for the Schema constructor
+const { Schema } = mongoose
+
+// Bread Schema
+const breadSchema = new Schema ({
+  name: { type: String, required: true },
+  hasGluten: { type: Boolean },
+  image: { type: String, default: 'http://placehold.it/500x500.png' }
+})
+
+// bread model
+const Bread = mongoose.model('Bread', breadSchema)
+
+// Part 1: Bread -> The variable we are saving our model to
+// Part 2: mongoose.model -> Mongoose method that creates a model for us
+// Part 3: 'Bread' --> Argument 1 is the name of the collecion we want to connect this model to
+// Part 4: breadSchema --> Argument 2 the schema we want our model to use
+
+// export bread
+module.exports = Bread
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* module.exports = [
     {
       name: 'Rye',
       hasGluten: true,
@@ -21,3 +62,4 @@ module.exports = [
     }
   ]
   
+  */
