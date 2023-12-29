@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 // CONFIGURATION
 require('dotenv').config()
 const PORT = process.env.PORT
+console.log(PORT)
 const app = express()
 
 // MIDDLEWARE
